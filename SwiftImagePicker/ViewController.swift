@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imageVIew: UIImageView!
     let imagePicker = UIImagePickerController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,7 +30,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.modalPresentationStyle = UIModalPresentationStyle.Popover
+        imagePicker.popoverPresentationController?.sourceView = imageVIew
+        self.presentViewController(imagePicker, animated: true, completion: nil)
     }
 
     @IBAction func butPhotoAction(sender: AnyObject) {
